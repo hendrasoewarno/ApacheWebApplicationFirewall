@@ -1,4 +1,4 @@
-## INSTALASI MOD-SECURITY (Web Application Firewall)
+## INSTALASI MOD-SECURITY (Web Application Firewall) pada Apache2
 Jalankan perintah berikut untuk melihat response header sebelum aplikasi dari WAF
 ```
 curl -i localhost
@@ -152,6 +152,6 @@ menjadi
 SecRule REQUEST_HEADERS|XML:/*|!REQUEST_HEADERS:Referer "\b(\d+) ?= ?\1\b|[\'\"](\w+)[\'\"] ?= ?[\'\"]\2\b|.*[-]{2,}.*|.*#.*" \
         "phase:2,capture,t:none,t:urlDecodeUni,t:htmlEntityDecode,t:replaceComments,t:compressWhiteSpace,t:lowercase,ctl:auditLogParts=+E,deny,log,auditlog,status:501,msg:'SQL Injection Attack',id:'959901',tag:'WEB_ATTACK/SQL_INJECTION',logdata:'%{TX.0}',severity:'2'"
 ```
-Ingat, pada setipan perubahan setting, maka jangan lupa melakukan restart server Apache anda.
+Ingat, pada setiap perubahan setting, maka jangan lupa melakukan restart server Apache anda.
 # Kesimpulan
 Mod_Security bekerja sebagai Web Application Firewall untuk menfilter request dari pemakai melalui predefined rule untuk mendeteksi eksploitasi WEB seperti upaya SqlInjection dan XSS maupun eksplotasi oleh pengembang dengan mengirim script yang beresiko ke sisi Client.
