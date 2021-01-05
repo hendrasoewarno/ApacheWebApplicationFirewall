@@ -154,4 +154,4 @@ SecRule REQUEST_HEADERS|XML:/*|!REQUEST_HEADERS:Referer "\b(\d+) ?= ?\1\b|[\'\"]
 ```
 Ingat, pada setiap perubahan setting, maka jangan lupa melakukan restart server Apache anda.
 # Kesimpulan
-Mod_Security bekerja sebagai Web Application Firewall untuk menfilter request dari pemakai melalui predefined rule untuk mendeteksi eksploitasi WEB seperti upaya SqlInjection dan XSS maupun eksplotasi oleh pengembang dengan mengirim script yang beresiko ke sisi Client.
+Mod_Security bekerja sebagai Web Application Firewall untuk menfilter request dari pemakai melalui predefined rule untuk mendeteksi eksploitasi WEB seperti upaya SqlInjection dan XSS maupun eksplotasi oleh pengembang dengan mengirim script yang beresiko ke sisi Client. Penerapan Rule terkait WAF membutuhkan proses penyesuaian sesuai dengan kondisi penerapan, sehingga kadang-kadang membutuhkan penyesuaian kembali seperti non-aktifkan beberapa rule berdasarkan ID, melakukan modifikasi pada regex expression, ataupun penyesuaian dari data dan system yang dikembangkan oleh developer.
