@@ -1,5 +1,10 @@
 ## INSTALASI MOD-SECURITY (Web Application Firewall) pada Apache2
-Jalankan perintah berikut untuk melihat response header sebelum aplikasi dari WAF
+Upaya pengembangan WEB membutuhkan startegi pengamanan yang berlapis, yaitu:
+1. Menggunakan sistem operasi dengan setting dan konfigurasi yang aman
+2. Menggunakan webserver, scripting dan database server dengan setting dan konfigurasi yang aman
+3. Melakukan pemeriksaan terhadap semua POST/GET sebelum diproses untuk menghindari potensi serangan SQL Injection, XSS, maupun upaya melanggar hak akses
+4. Memasang Web Application Firewall untuk pertahanan berlapis atas segala response dan request.
+Pada tulisan ini akan membahas terkait dengan instalasi dan setting module MOD-Security pada Apache2.
 ```
 curl -i localhost
 ```
