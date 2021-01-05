@@ -23,6 +23,13 @@ Content-Type: text/html
 Proses instalasi
 ```
 apt-get install libapache-mod-security
+```
+atau untuk versi ubuntu 14.02 keatas
+```
+apt-get install libapache-mod-security2
+```
+dan aktifkan mod-security pada apache2
+```
 a2enmod mod-security
 service apache2 restart
 ```
