@@ -165,5 +165,17 @@ SecRule REQUEST_HEADERS|XML:/*|!REQUEST_HEADERS:Referer "\b(\d+) ?= ?\1\b|[\'\"]
         "phase:2,capture,t:none,t:urlDecodeUni,t:htmlEntityDecode,t:replaceComments,t:compressWhiteSpace,t:lowercase,ctl:auditLogParts=+E,deny,log,auditlog,status:501,msg:'SQL Injection Attack',id:'959901',tag:'WEB_ATTACK/SQL_INJECTION',logdata:'%{TX.0}',severity:'2'"
 ```
 Ingat, pada setiap perubahan setting, maka jangan lupa melakukan restart server Apache anda.
+### Mengatur logrotate
+Untuk mengatur logrotate anda perlu menambahkan script berikut ini pada /etc/logrotate
+```
+/var/log/apache2/mod_security/modsec_audit.log {
+    rotate 7
+    compress
+    daily
+    postrotate
+       /etc/init.d/apache2 reload > /dev/null 2>&1 || true
+    endscript
+```
+Jika anda tidak menambahkan postrotate untuk apache2 reload akan menyebabkan MOD-Security tidak akan sanggup melakukan log ke file baru yang dirotate
 # Kesimpulan
 Mod_Security bekerja sebagai Web Application Firewall untuk menfilter request dari pemakai melalui predefined rule untuk mendeteksi eksploitasi WEB seperti upaya SqlInjection dan XSS maupun eksplotasi oleh pengembang dengan mengirim script yang beresiko ke sisi Client. Penerapan Rule terkait WAF membutuhkan proses penyesuaian sesuai dengan kondisi penerapan, sehingga kadang-kadang membutuhkan penyesuaian kembali seperti non-aktifkan beberapa rule berdasarkan ID, melakukan modifikasi pada regex expression, ataupun penyesuaian dari data dan system yang dikembangkan oleh developer.
