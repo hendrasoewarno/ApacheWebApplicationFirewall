@@ -175,6 +175,7 @@ Untuk mengatur logrotate anda perlu menambahkan script berikut ini pada /etc/log
     postrotate
        /etc/init.d/apache2 reload > /dev/null 2>&1 || true
     endscript
+}
 ```
 Jika anda tidak menambahkan postrotate untuk apache2 reload akan menyebabkan MOD-Security tidak akan sanggup melakukan log ke file baru yang dirotate
 # Kesimpulan
