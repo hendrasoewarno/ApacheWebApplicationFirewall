@@ -145,6 +145,14 @@ Jika setelah implementasi ditemukan beberapa aplikasi yang awalnya berjalan deng
 SecRuleEngine Off
 </Directory>
 ```
+### Non-Aktifkan Mod-Security terhadap URI tertentu
+Jika dalam implementasi anda ingin Mod-Security mengabaikan URI tertentu, maka anda dapat menggunakan setting sebagai berikut:
+
+```
+SecRule REQUEST_URI "@beginsWith /aaaa/bbbb.php" "id:1,phase:2,pass,nolog,allow,ctl:ruleEngine=Off"
+```
+Dengan catatan Phase(1) adalah mengabaikan request Header, Phase(2) adalah mengabaikan request Body, Phase(3) adalah mengabaikan response Header, dan Phase(4) adalah mengabaikan response Body.
+
 ### Non-Aktifkan Rule Mod-Security berdasarkan Id
 Jika anda menemukan ada beberapa rule yang tidak sesuai dengan prilaku aplikasi, dan anda ingin mengabaikan rule tersebut berdasarkan id:
 ```
